@@ -1,0 +1,19 @@
+{
+    "name": "dsjs",
+    "description": "Data Structures in Javascript",
+    "version": "0.0.1",
+    "author": "Alfonso Harita <alharita@gmail.com>",
+    "engines": [ "node" ],
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/aharita/dsjs"
+        },
+    "dependencies": {
+        "mocha": ">=1.8.1",
+        "yuidocjs": ">=0.3.36",
+        "jslint": ">=0.1.9"
+    },
+    "scripts" : {
+        "test" : "make test"
+    }
+}
