@@ -95,13 +95,24 @@
 
     /**
     * Adds a node as the first element of the LinkedList. Will throw
-    * an exception if it's not passed in a Node instance
+    * an exception if it's not passed in a Node instance.
+    * If a first node already exists, it will be switched as next, and the new node
+    * will be the first
     * @method addFirst
     * @param {Node} Node that will be assigned as the first item in the LinkedList
     **/
     dsjs.LinkedList.prototype.addFirst = function (node) {
         if (node instanceof dsjs.Node) {
-            this.first = node;
+            if (this.first === null) {
+                this.first = this.last = node;
+            } else {
+                var tempNode = this.first;
+                this.first = node;
+                node.next = tempNode;
+                tempNode.previous = node;
+            }
+            node.parent = this;
+            this.count += 1;
         } else {
             throw "Need to pass a Node instance";
         }
