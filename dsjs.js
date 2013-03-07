@@ -118,5 +118,30 @@
         }
     };
 
+    /**
+    * Adds a node as the last element of the LinkedList. Will throw
+    * an exception if it's not passed in a Node instance.
+    * If a last node already exists, it will be switched as previous, and the new node
+    * will be the last
+    * @method addLast
+    * @param {Node} Node that will be assigned as the last item in the LinkedList
+    **/
+    dsjs.LinkedList.prototype.addLast = function (node) {
+        if (node instanceof dsjs.Node) {
+            if (this.last === null) {
+                this.first = this.last = node;
+            } else {
+                var tempNode = this.last;
+                this.last = node;
+                node.previous = tempNode;
+                tempNode.next = node;
+            }
+            node.parent = this;
+            this.count += 1;
+        } else {
+            throw "Need to pass a Node instance";
+        }
+    };
+
     module.exports = dsjs;
 }());
