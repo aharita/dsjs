@@ -5,7 +5,7 @@
     'use strict';
 
     var assert = require("assert"),
-        dsjs = require("../dsjs");
+        dsjs = require("../");
 
     describe('dsjs', function () {
         describe('Node', function () {
@@ -418,6 +418,138 @@
                     assert.strictEqual(node4.next, null);
                     assert.strictEqual(node4.previous, null);
                     assert.strictEqual(node4.parent, null);
+                });
+            });
+
+            describe('findFirst', function () {
+                it('should be able to find the first Node that has the value', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        result = null,
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20),
+                        node3 = new dsjs.Node(30);
+
+                    list.addLast(node);
+                    list.addLast(node2);
+                    list.addLast(node3);
+                    result = list.findFirst(20);
+
+                    assert.notStrictEqual(result, null);
+                    assert.strictEqual(result.next, node3);
+                    assert.strictEqual(result.previous, node);
+                    assert.strictEqual(result.parent, list);
+                });
+
+                it('should be able to find the first Node that has the value with more than one Node that have the same value', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        result = null,
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20),
+                        node3 = new dsjs.Node(20);
+
+                    list.addLast(node);
+                    list.addLast(node2);
+                    list.addLast(node3);
+                    result = list.findFirst(20);
+
+                    assert.notStrictEqual(result, null);
+                    assert.strictEqual(result.next, node3);
+                    assert.strictEqual(result.previous, node);
+                    assert.strictEqual(result.parent, list);
+                });
+
+                it('should return null when there are no Nodes in the LinkedList', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        result = null;
+
+                    result = list.findFirst(20);
+
+                    assert.strictEqual(result, null);
+                });
+
+                it('should return null if a Node is not found with the value specified', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        result = null,
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20),
+                        node3 = new dsjs.Node(30);
+
+                    list.addLast(node);
+                    list.addLast(node2);
+                    list.addLast(node3);
+                    result = list.findFirst(500);
+
+                    assert.strictEqual(result, null);
+                });
+            });
+
+            describe('findLast', function () {
+                it('should be able to find the last Node that has the value', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        result = null,
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20),
+                        node3 = new dsjs.Node(30);
+
+                    list.addLast(node);
+                    list.addLast(node2);
+                    list.addLast(node3);
+                    result = list.findLast(20);
+
+                    assert.notStrictEqual(result, null);
+                    assert.strictEqual(result.next, node3);
+                    assert.strictEqual(result.previous, node);
+                    assert.strictEqual(result.parent, list);
+                });
+
+                it('should be able to find the last Node that has the value with more than one Node that have the same value', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        result = null,
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20),
+                        node3 = new dsjs.Node(20);
+
+                    list.addLast(node);
+                    list.addLast(node2);
+                    list.addLast(node3);
+                    result = list.findLast(20);
+
+                    assert.notStrictEqual(result, null);
+                    assert.strictEqual(result.next, null);
+                    assert.strictEqual(result.previous, node2);
+                    assert.strictEqual(result.parent, list);
+                });
+
+                it('should return null when there are no Nodes in the LinkedList', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        result = null;
+
+                    result = list.findLast(20);
+
+                    assert.strictEqual(result, null);
+                });
+
+                it('should return null if a Node is not found with the value specified', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        result = null,
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20),
+                        node3 = new dsjs.Node(30);
+
+                    list.addLast(node);
+                    list.addLast(node2);
+                    list.addLast(node3);
+                    result = list.findLast(500);
+
+                    assert.strictEqual(result, null);
                 });
             });
         });

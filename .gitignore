@@ -1,2 +1,4 @@
 node_modules
 apidocs
+lib-cov
+coverage.html
