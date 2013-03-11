@@ -270,6 +270,156 @@
                     assert.strictEqual(list.last.previous.previous.previous.previous.previous, null);
                 });
             });
+
+            describe('clear', function () {
+                it('should be able to clear all the Nodes', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20);
+
+                    assert.strictEqual(list.count, 0);
+
+                    list.addLast(node);
+                    list.addFirst(node2);
+
+                    assert.strictEqual(list.count, 2);
+
+                    list.clear();
+
+                    assert.strictEqual(list.count, 0);
+                    assert.strictEqual(list.first, null);
+                    assert.strictEqual(list.last, null);
+                });
+            });
+
+            describe('removeFirst', function () {
+                it('should be able to remove the first Node when only one Node exists', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        node = new dsjs.Node(10);
+
+                    list.addFirst(node);
+                    list.removeFirst();
+
+                    assert.strictEqual(list.count, 0);
+                    assert.strictEqual(list.first, null);
+                    assert.strictEqual(list.last, null);
+                    assert.strictEqual(node.next, null);
+                    assert.strictEqual(node.previous, null);
+                    assert.strictEqual(node.parent, null);
+                });
+
+                it('should be able to remove the first Node when two Nodes exists', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20);
+
+                    list.addFirst(node);
+                    list.addLast(node2);
+                    list.removeFirst();
+
+                    assert.strictEqual(list.count, 1);
+                    assert.strictEqual(list.first, node2);
+                    assert.strictEqual(list.last, node2);
+                    assert.strictEqual(node.next, null);
+                    assert.strictEqual(node.previous, null);
+                    assert.strictEqual(node.parent, null);
+                    assert.strictEqual(node2.next, null);
+                    assert.strictEqual(node2.previous, null);
+                    assert.strictEqual(node2.parent, list);
+                });
+
+                it('should be able to remove the first Node when more than two Nodes exists', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20),
+                        node3 = new dsjs.Node(30),
+                        node4 = new dsjs.Node(40);
+
+                    list.addLast(node);
+                    list.addLast(node2);
+                    list.addLast(node3);
+                    list.addLast(node4);
+                    list.removeFirst();
+
+                    assert.strictEqual(list.count, 3);
+                    assert.strictEqual(list.first, node2);
+                    assert.strictEqual(list.last, node4);
+                    assert.strictEqual(node.next, null);
+                    assert.strictEqual(node.previous, null);
+                    assert.strictEqual(node.parent, null);
+                    assert.strictEqual(node2.next, node3);
+                    assert.strictEqual(node2.previous, null);
+                    assert.strictEqual(node2.parent, list);
+                });
+            });
+
+            describe('removeLast', function () {
+                it('should be able to remove the last Node when only one Node exists', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        node = new dsjs.Node(10);
+
+                    list.addFirst(node);
+                    list.removeLast();
+
+                    assert.strictEqual(list.count, 0);
+                    assert.strictEqual(list.first, null);
+                    assert.strictEqual(list.last, null);
+                    assert.strictEqual(node.next, null);
+                    assert.strictEqual(node.previous, null);
+                    assert.strictEqual(node.parent, null);
+                });
+
+                it('should be able to remove the last Node when two Nodes exists', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20);
+
+                    list.addFirst(node);
+                    list.addLast(node2);
+                    list.removeLast();
+
+                    assert.strictEqual(list.count, 1);
+                    assert.strictEqual(list.first, node);
+                    assert.strictEqual(list.last, node);
+                    assert.strictEqual(node.next, null);
+                    assert.strictEqual(node.previous, null);
+                    assert.strictEqual(node.parent, list);
+                    assert.strictEqual(node2.next, null);
+                    assert.strictEqual(node2.previous, null);
+                    assert.strictEqual(node2.parent, null);
+                });
+
+                it('should be able to remove the last Node when more than two Nodes exists', function () {
+
+                    var list = new dsjs.LinkedList(),
+                        node = new dsjs.Node(10),
+                        node2 = new dsjs.Node(20),
+                        node3 = new dsjs.Node(30),
+                        node4 = new dsjs.Node(40);
+
+                    list.addLast(node);
+                    list.addLast(node2);
+                    list.addLast(node3);
+                    list.addLast(node4);
+                    list.removeLast();
+
+                    assert.strictEqual(list.count, 3);
+                    assert.strictEqual(list.first, node);
+                    assert.strictEqual(list.last, node3);
+                    assert.strictEqual(node3.next, null);
+                    assert.strictEqual(node3.previous, node2);
+                    assert.strictEqual(node3.parent, list);
+                    assert.strictEqual(node4.next, null);
+                    assert.strictEqual(node4.previous, null);
+                    assert.strictEqual(node4.parent, null);
+                });
+            });
         });
     });
 }());

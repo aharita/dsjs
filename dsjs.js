@@ -143,5 +143,81 @@
         }
     };
 
+    /**
+    * Clears all the nodes in the LinkedList
+    * @method clear
+    **/
+    dsjs.LinkedList.prototype.clear = function () {
+        this.first = null;
+        this.last = null;
+        this.count = 0;
+    };
+
+    /**
+    * Removes the first Node from the LinkedList, it will set the next Node as the
+    * first, otherwise, the first position will be null
+    * @method removeFirst
+    **/
+    dsjs.LinkedList.prototype.removeFirst = function () {
+        if (this.first !== null) {
+            var tempNode = this.first;
+
+            if (this.count === 1) {
+                this.first = null;
+                this.last = null;
+            } else {
+                this.first = tempNode.next;
+                this.first.previous = null;
+            }
+
+            tempNode.next = null;
+            tempNode.parent = null;
+            this.count -= 1;
+        }
+    };
+
+    /**
+    * Removes the last Node from the LinkedList, it will set the previous Node as the
+    * last, otherwise, the last position will be null
+    * @method removeLast
+    **/
+    dsjs.LinkedList.prototype.removeLast = function () {
+        if (this.last !== null) {
+            var tempNode = this.last;
+
+            if (this.count === 1) {
+                this.first = null;
+                this.last = null;
+            } else {
+                this.last = tempNode.previous;
+                this.last.next = null;
+            }
+
+            tempNode.previous = null;
+            tempNode.parent = null;
+            this.count -= 1;
+        }
+    };
+
+    /**
+    * Looks for the Node that contains the value passed in from the start of the list
+    * until the end. It will return the first Node instance that matches the value
+    * @method findFirst
+    * @param {Object} Value that we're looking for in the Node
+    **/
+    dsjs.LinkedList.prototype.findFirst = function (val) {
+        // TODO: Make it work
+    };
+
+    /**
+    * Looks for the Node that contains the value passed in from the end of the list
+    * until the beginning. It will return the first Node instance that matches the value
+    * @method findLast
+    * @param {Object} Value that we're looking for in the Node
+    **/
+    dsjs.LinkedList.prototype.findLast = function (val) {
+        // TODO: Make it work
+    };
+
     module.exports = dsjs;
 }());
