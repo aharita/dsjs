@@ -3,6 +3,7 @@
     "description": "Data Structures in Javascript",
     "version": "0.0.1",
     "author": "Alfonso Harita <alharita@gmail.com>",
+    "main": "./lib/dsjs.js",
     "engines": [ "node" ],
     "repository": {
         "type": "git",
