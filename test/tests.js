@@ -5,7 +5,7 @@
     'use strict';
 
     var assert = require("assert"),
-        dsjs = require("../");
+        dsjs = require("../index");
 
     describe('dsjs', function () {
         describe('Node', function () {
