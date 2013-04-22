@@ -21,3 +21,18 @@ var n = new dsjs.Node();
 l.addFirst(n);
 ```
 
+## Queue
+
+```javascript
+var q = new dsjs.Queue();
+var n = new dsjs.Node();
+q.enqueue(n);
+```
+
+## Stack
+
+```javascript
+var s = new dsjs.Stack();
+var n = new dsjs.Node();
+s.push(n);
+```

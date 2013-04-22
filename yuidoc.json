@@ -1,7 +1,7 @@
 {
     "name": "dsjs",
     "description": "Data Structures in Javascript",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "Alfonso Harita <alharita@gmail.com>",
     "url" : "https://github.com/aharita/dsjs",
     "options": {
