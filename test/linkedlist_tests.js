@@ -19,14 +19,14 @@
                 assert.strictEqual(list.count, 0);
             });
 
-            it('should throw an exception if other than an instance of Node is passed', function () {
-
-                var list = new dsjs.LinkedList();
-
-                assert.throws(function () { list.addFirst(10); }, /Need to pass a Node instance/);
-            });
-
             describe('addFirst', function () {
+                it('should throw an exception if other than an instance of Node is passed', function () {
+
+                    var list = new dsjs.LinkedList();
+
+                    assert.throws(function () { list.addFirst(10); }, /Need to pass a Node instance/);
+                });
+
                 it('should be able to assign a Node as the first item', function () {
 
                     var list = new dsjs.LinkedList(),
@@ -133,6 +133,13 @@
             });
 
             describe('addLast', function () {
+                it('should throw an exception if other than an instance of Node is passed', function () {
+
+                    var list = new dsjs.LinkedList();
+
+                    assert.throws(function () { list.addFirst(10); }, /Need to pass a Node instance/);
+                });
+
                 it('should be able to assign a Node as the last item', function () {
 
                     var list = new dsjs.LinkedList(),
