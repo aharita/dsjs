@@ -26,7 +26,7 @@ l.addFirst(n);
 ```javascript
 var q = new dsjs.Queue();
 var n = new dsjs.Node();
-q.enqueue(n);
+q.enqueue(n); 
 ```
 
 ## Stack
